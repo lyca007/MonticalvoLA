@@ -235,12 +235,10 @@ namespace Stack
                                 break;
                             }
 
-                            // apply changes only after everything is valid
                             students[indexOfValue].Name = newName;
                             students[indexOfValue].Program = newProgram;
                             students[indexOfValue].YearLevel = newYearLevel;
 
-                            // record operation
                             operationHistory.Push(new Operation
                             {
                                 Action = "Updated",
@@ -276,7 +274,6 @@ namespace Stack
 
                         if (indexOfValue != -1)
                         {
-                            // save details BEFORE the record is shifted/cleared
                             Operation deletedOp = new Operation
                             {
                                 Action = "Deleted",
@@ -293,7 +290,6 @@ namespace Stack
 
                             studentCount--;
 
-                            // record operation
                             operationHistory.Push(deletedOp);
 
                             Console.WriteLine("\nStudent deleted successfully!");
@@ -320,8 +316,6 @@ namespace Stack
                         }
                         else
                         {
-                            // a Stack enumerates newest-first, so Reverse() lists
-                            // oldest-first like the sample output (stack is unchanged)
                             int num = 1;
                             foreach (Operation op in operationHistory.Reverse())
                             {
@@ -336,7 +330,7 @@ namespace Stack
 
 
                     case 7:
-                        // view last operation (Peek: does NOT remove)
+                        // view last operation
                         if (operationHistory.Count == 0)
                         {
                             Console.WriteLine("\nNo operations recorded.");
@@ -353,7 +347,7 @@ namespace Stack
 
 
                     case 8:
-                        // remove last operation (Pop: removes the top)
+                        // remove last operation
                         if (operationHistory.Count == 0)
                         {
                             Console.WriteLine("\nNo operations recorded.");
